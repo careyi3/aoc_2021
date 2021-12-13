@@ -2,6 +2,8 @@
 
 require('pry')
 require_relative('../read_file')
+require_relative('../instrument')
+
 class Map
   attr_reader(:nodes, :paths)
 
@@ -67,10 +69,12 @@ class Map
   end
 end
 
-map = Map.new
+Instrument.time do
+  map = Map.new
 
-FileReader.for_each_in('./input') do |line|
-  map.add_edge(line.gsub("\n", ''))
+  FileReader.for_each_in('./input') do |line|
+    map.add_edge(line.gsub("\n", ''))
+  end
+
+  puts map.count_paths
 end
-
-puts map.count_paths
