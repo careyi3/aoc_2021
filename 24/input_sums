@@ -1,0 +1,14 @@
+x = z % 26
+z = z / a
+x = x + b
+x = x == w ? 1 : 0
+x = x == 0 ? 1 : 0
+y = 0
+y = y + 25
+y = y * x
+y = y + 1
+z = z * y
+y = 0
+y = w + c
+y = y * x
+z = z * y
