@@ -22,6 +22,7 @@ Instrument.time do
 
   move = true
   step = 0
+  arr = [[]]
   while move
     move = false
 
@@ -68,6 +69,16 @@ Instrument.time do
     end
 
     step += 1
+
+    grid.each do |key, val|
+      x, y = key.split(',').map(&:to_i)
+      arr[y] = [] if arr[y].nil?
+      arr[y][x] = val[:val]
+    end
+
+    arr.each do |ar|
+      puts ar.join(' ')
+    end
   end
 
   puts step

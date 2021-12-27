@@ -83,23 +83,22 @@ Instrument.time do
     z
   end
 
-  zs = [[0], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
-  nums = [[], [], [], [], [], [], [], [], [], [], [], [], [], []]
-  13.downto(0).each_with_index do |num, idx|
+  def calculate(zt, idx, path)
+    if idx == -1
+      puts path
+      return
+    end
+
     (0..10000).each do |z|
       (1..9).each do |w|
-        zo = prog(z, w, num)
-        if zs[idx].include?(zo)
-          zs[idx + 1] << z
-          nums[idx] << w
+        zo = prog(z, w, idx)
+        if zo == zt
+          path = "#{w}#{path}"
+          calculate(z, idx - 1, path)
         end
       end
     end
   end
-  strings = []
-  nums.each do |seq|
-    seq.each do |val|
-      binding.pry
-    end
-  end
+
+  calculate(0, 13, "")
 end
